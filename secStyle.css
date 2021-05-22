@@ -1,0 +1,22 @@
+.ip-number {
+  width: 150px;
+  height: 150px;
+  border: 7.25px solid #1c195b;
+  border-radius: 50%;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ip-number > span {
+  font-size: 90px;
+  color: #1c195b;
+  font-family: AktivGrotesk-BoldItalic, Aktiv Grotesk;
+  font-style: italic;
+}
+.child-list-item > svg {
+  width: 320px;
+}
+#Layer_2 g:not(:first-child) {
+  cursor: pointer;
+}

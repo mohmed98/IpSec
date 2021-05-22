@@ -1,0 +1,322 @@
+.sec-container {
+  width: 950px;
+  margin: auto;
+}
+.sec-container * {
+  list-style-type: none;
+}
+body > div > ul > li {
+  position: relative;
+}
+.parent-list-icon {
+  position: absolute;
+  top: 18%;
+  left: -150px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+.parent-list-icon img {
+  width: 73px;
+}
+.thirdSec .parent-list-icon {
+  top: 7%;
+  left: -150px;
+}
+.child-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-left: 3rem;
+}
+.child-list-item:not(:first-child) {
+  margin-top: 2rem;
+}
+.child-list-item::before {
+  position: absolute;
+  content: "";
+  width: 125px;
+  left: -145px;
+  height: 1px;
+  background-color: #1c195b;
+}
+.child-list-item:not(:first-child):before {
+  width: 71px;
+  left: -97px;
+}
+.child-list {
+  position: relative;
+}
+.child-list::before {
+  position: absolute;
+  top: 24%;
+  left: 0;
+  content: "";
+  height: 52%;
+  width: 1px;
+  background-color: #1c195b;
+}
+.secondSec .child-list::before {
+  top: 26.4%;
+}
+.thirdSec .child-list::before {
+  top: 10.7%;
+  height: 73.5%;
+}
+.item-number {
+  border: 5px solid #000;
+  border-radius: 50%;
+}
+.child-list-item .item-branches-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.child-list-item .item-text {
+  width: 400px;
+}
+.item-text h3 {
+  color: #1c195b;
+  font-size: 31px;
+  line-height: 35px;
+  font-family: "Aktiv-Bold";
+}
+.item-text p {
+  color: #1c195b;
+  font-size: 28px;
+  line-height: normal;
+  font-family: "Aktiv-bold";
+}
+#flowerOneThree:hover {
+  background-color: green;
+}
+
+area {
+  cursor: pointer;
+}
+.flowerOneOne-text {
+  display: none;
+  position: absolute;
+  background: #fff;
+  width: 400px;
+  right: 0;
+}
+.close-item-popup {
+  position: absolute;
+  top: 18px;
+  right: 21px;
+  background-color: initial !important;
+  color: #1c195b !important;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0;
+  cursor: pointer;
+}
+.child-list-item .item-popup {
+  position: relative;
+  background-color: #5bc9bf15;
+  width: 540px;
+  height: 350px;
+  display: flex;
+  padding: 15px;
+}
+.child-list-item .item-popup div.right-sec {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.child-list-item .item-popup div.right-sec img {
+  width: fit-content;
+}
+div.right-sec > .target-img {
+  max-width: 80px;
+  padding: 5px;
+}
+.goal-img {
+  max-width: 55px !important;
+}
+.drakYellow {
+  background-color: #bf8c2e;
+}
+.drakRed {
+  background-color: #c51a2d;
+}
+.lightOrange {
+  background-color: #fe6a25;
+}
+.lightBlue {
+  background-color: #26bde3;
+}
+.strongOrange {
+  background-color: #ff3a21;
+}
+.strongRed {
+  background-color: #dd1267;
+}
+.strongGreen {
+  background-color: #4c9f38;
+}
+.lightYellow {
+  background-color: #fe9e23;
+}
+.child-list-item .item-popup div.left-sec {
+  width: 340px;
+  margin: 0 auto;
+}
+.child-list-item .item-popup div.left-sec .popup-title,
+.mobile-list-item .item-popup div.left-sec .popup-title {
+  font-size: 13px;
+  text-transform: uppercase;
+  position: relative;
+  top: -10px;
+}
+.child-list-item .item-popup div.left-sec .popup-text,
+.mobile-list-item .item-popup div.left-sec .popup-text {
+  font-size: 18px;
+  color: #1c195b;
+}
+.child-list-item .item-popup div.left-sec .popup-title::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  position: absolute;
+  background-color: #1c195b;
+  top: 65%;
+  left: -35px;
+}
+.child-list-item .item-popup div.left-sec .popup-title span,
+.mobile-list-item .item-popup div.left-sec .popup-title span {
+  color: #1c195b;
+}
+.child-list-item .item-popup div.left-sec .popup-title .number,
+.mobile-list-item .item-popup div.left-sec .popup-title .number {
+  font-size: 28px;
+}
+.show-text {
+  display: block;
+}
+.faded-goal {
+  opacity: 0.5;
+}
+.parent-list {
+  position: relative;
+}
+.parent-list li {
+  list-style: none;
+  position: relative;
+}
+/* flower mobile */
+.mobile-list-item:nth-child(even) {
+  background-color: #5bc9bf15;
+}
+.mobile-list-item .top-section {
+  display: flex;
+}
+.mobile-list-item .item-popup {
+  position: fixed;
+  height: 100vh;
+  right: 0;
+  top: 0px;
+  left: 0;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  z-index: 10;
+  background-color: #e8f7f5;
+}
+.mobile-list-item .item-popup .right-sec {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 70px;
+}
+.mobile-list-item .item-popup .right-sec img:nth-child(2) {
+  max-height: 80%;
+}
+.mobile-list-item .item-popup div.left-sec .popup-title::before {
+  content: "";
+  width: 1px;
+  height: 55px;
+  position: absolute;
+  background-color: #1c195b;
+  top: -150%;
+  left: 26px;
+}
+.mobile-list-item div.top-section > div.left-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.mobile-list-header {
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+}
+
+.item-lines {
+  height: 73px;
+  width: 26px;
+  border: solid #1c195b;
+  border-width: 0 0 1px 1px;
+  margin-top: 10px;
+}
+.mobile-list-item div.top-section > div.right-section {
+  padding-top: 27px;
+}
+.mobile-list-item div.top-section > div.right-section .flower-img-wrapper {
+  position: relative;
+  left: -16px;
+}
+.mobile-list-item {
+  position: relative;
+  margin: 40px 0;
+}
+
+.mobile-list-item-icon {
+  width: 53px;
+}
+.mobile-list-item-title {
+  font-size: 11px;
+  color: #1c195b;
+  line-height: 1;
+  width: 60px;
+  font-family: "Aktiv-Bold";
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.mobile-list-item-title.desktop {
+  width: auto;
+  max-width: 90px;
+  text-align: center;
+}
+.mobile-list-item .flower-Sec {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-list-item .flower-Sec .flower-img-wrapper {
+  align-self: flex-start;
+  padding-left: 37px;
+}
+.flower-img-wrapper img {
+  width: 242px;
+}
+.mobile-list-item .item-text h3 {
+  color: #1c195b;
+  font-size: 25px;
+  line-height: 30px;
+  font-family: "Aktiv-Bold";
+}
+.item-text p {
+  color: #1c195b;
+  font-size: 24px;
+  line-height: normal;
+  font-family: aktiv-bold;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  #mobile-landing-page > div > div > div > img {
+    max-width: none !important;
+  }
+}
