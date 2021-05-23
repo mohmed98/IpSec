@@ -9,6 +9,7 @@ function removePopUp(textElem) {
 }
 function togglePopUp(textElem, areaElm, goalElem) {
   textElem.forEach(function (item) {
+    console.log(item);
     item.classList.toggle("show-text");
   });
   areaElm.forEach(function (item) {
@@ -96,683 +97,344 @@ const twoThreeClose = document.querySelectorAll("#twoThreeClose");
 
 twoOneArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    twoThreeText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    twoTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    twoOneText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    twoOneClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        twoOneText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(twoOneText, twoOneArea, [twoThreeArea, twoTwoArea]);
+    closePopUp(twoOneClose, twoOneText, [twoThreeArea, twoTwoArea]);
+    removePopUp([twoThreeText, twoTwoText], [twoThreeArea, twoTwoArea]);
   });
 });
 
 twoTwoArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    twoThreeText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    twoOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    twoTwoText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    twoTwoClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        twoTwoText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(twoTwoText, twoTwoArea, [twoThreeArea, twoOneArea]);
+    closePopUp(twoTwoClose, twoTwoText, [twoThreeArea, twoOneArea]);
+    removePopUp([twoThreeText, twoOneText], [twoThreeArea, twoOneArea]);
   });
 });
 
 twoThreeArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    twoTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    twoOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    twoThreeText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    twoThreeClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        twoThreeText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(twoThreeText, twoThreeArea, [twoTwoArea, twoOneArea]);
+    closePopUp(twoThreeClose, twoThreeText, [twoTwoArea, twoOneArea]);
+    removePopUp([twoTwoText, twoOneText], [twoTwoArea, twoOneArea]);
   });
 });
 
 // IP3
 // 9.4
-const threeOneArea = document.querySelectorAll("#threeOneArea");
+const threeOneArea = document.querySelectorAll("#Layer_14");
 const threeOneText = document.querySelectorAll("#threeOneText");
 const threeOneClose = document.querySelectorAll("#threeOneClose");
 // 12.2
-const threeTwoArea = document.querySelectorAll("#threeTwoArea");
+const threeTwoArea = document.querySelectorAll("#Layer_13");
 const threeTwoText = document.querySelectorAll("#threeTwoText");
 const threeTwoClose = document.querySelectorAll("#threeTwoClose");
 
 // 6.4
-const threeThreeArea = document.querySelectorAll("#threeThreeArea");
+const threeThreeArea = document.querySelectorAll("#Layer_12");
 const threeThreeText = document.querySelectorAll("#threeThreeText");
 const threeThreeClose = document.querySelectorAll("#threeThreeClose");
 
 // 12.5
-const threeFourArea = document.querySelectorAll("#threeFourArea");
+const threeFourArea = document.querySelectorAll("#Layer_11");
 const threeFourText = document.querySelectorAll("#threeFourText");
 const threeFourClose = document.querySelectorAll("#threeFourClose");
 
 threeOneArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    threeFourText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    threeThreeText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    threeTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    threeOneText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    threeOneClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        threeOneText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(threeOneText, threeOneArea, [
+      threeThreeArea,
+      threeTwoArea,
+      threeFourArea,
+    ]);
+    closePopUp(threeOneClose, threeOneText, [
+      threeThreeArea,
+      threeTwoArea,
+      threeFourArea,
+    ]);
+    removePopUp(
+      [threeThreeText, threeTwoText, threeFourText],
+      [threeThreeArea, threeTwoArea, threeFourArea]
+    );
   });
 });
-
 threeTwoArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    threeFourText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    threeThreeText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    threeOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    threeTwoText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    threeTwoClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        threeTwoText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(threeTwoText, threeTwoArea, [
+      threeThreeArea,
+      threeOneArea,
+      threeFourArea,
+    ]);
+    closePopUp(threeTwoClose, threeTwoText, [
+      threeThreeArea,
+      threeOneArea,
+      threeFourArea,
+    ]);
+    removePopUp(
+      [threeThreeText, threeOneText, threeFourText],
+      [threeThreeArea, threeOneArea, threeFourArea]
+    );
   });
 });
-
 threeThreeArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    threeFourText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    threeOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    threeTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    threeThreeText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    threeThreeClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        threeThreeText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(threeThreeText, threeThreeArea, [
+      threeOneArea,
+      threeTwoArea,
+      threeFourArea,
+    ]);
+    closePopUp(threeThreeClose, threeThreeText, [
+      threeOneArea,
+      threeTwoArea,
+      threeFourArea,
+    ]);
+    removePopUp(
+      [threeOneText, threeTwoText, threeFourText],
+      [threeOneArea, threeTwoArea, threeFourArea]
+    );
   });
 });
-
 threeFourArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    threeOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    threeThreeText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    threeTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    threeFourText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    threeFourClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        threeFourText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(threeFourText, threeFourArea, [
+      threeThreeArea,
+      threeTwoArea,
+      threeOneArea,
+    ]);
+    closePopUp(threeFourClose, threeFourText, [
+      threeThreeArea,
+      threeTwoArea,
+      threeOneArea,
+    ]);
+    removePopUp(
+      [threeThreeText, threeTwoText, threeOneText],
+      [threeThreeArea, threeTwoArea, threeOneArea]
+    );
   });
 });
 
 // IP4
 // 5.6
-const fourOneArea = document.querySelectorAll("#fourOneArea");
+const fourOneArea = document.querySelectorAll("#Layer_9");
 const fourOneText = document.querySelectorAll("#fourOneText");
 const fourOneClose = document.querySelectorAll("#fourOneClose");
 // 10.3
-const fourTwoArea = document.querySelectorAll("#fourTwoArea");
+const fourTwoArea = document.querySelectorAll("#Layer_8");
 const fourTwoText = document.querySelectorAll("#fourTwoText");
 const fourTwoClose = document.querySelectorAll("#fourTwoClose");
 
 // 10.4
-const fourThreeArea = document.querySelectorAll("#fourThreeArea");
+const fourThreeArea = document.querySelectorAll("#Layer_44");
 const fourThreeText = document.querySelectorAll("#fourThreeText");
 const fourThreeClose = document.querySelectorAll("#fourThreeClose");
 
 fourOneArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    fourThreeText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    fourTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    fourOneText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    fourOneClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        fourOneText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(fourOneText, fourOneArea, [fourThreeArea, fourTwoArea]);
+    closePopUp(fourOneClose, fourOneText, [fourThreeArea, fourTwoArea]);
+    removePopUp([fourThreeText, fourTwoText], [fourThreeArea, fourTwoArea]);
   });
 });
 
 fourTwoArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    fourThreeText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    fourOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    fourTwoText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    fourTwoClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        fourTwoText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(fourTwoText, fourTwoArea, [fourThreeArea, fourOneArea]);
+    closePopUp(fourTwoClose, fourTwoText, [fourThreeArea, fourOneArea]);
+    removePopUp([fourThreeText, fourOneText], [fourThreeArea, fourOneArea]);
   });
 });
 
 fourThreeArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    fourTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    fourOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    fourThreeText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    fourThreeClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        fourThreeText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(fourThreeText, fourThreeArea, [fourTwoArea, fourOneArea]);
+    closePopUp(fourThreeClose, fourThreeText, [fourTwoArea, fourOneArea]);
+    removePopUp([fourTwoText, fourOneText], [fourTwoArea, fourOneArea]);
   });
 });
 
 // IP5
 // 12.4
-const fiveOneArea = document.querySelectorAll("#fiveOneArea");
+const fiveOneArea = document.querySelectorAll("#Layer_52");
 const fiveOneText = document.querySelectorAll("#fiveOneText");
 const fiveOneClose = document.querySelectorAll("#fiveOneClose");
 // 12.6
-const fiveTwoArea = document.querySelectorAll("#fiveTwoArea");
+const fiveTwoArea = document.querySelectorAll("#Layer_55");
 const fiveTwoText = document.querySelectorAll("#fiveTwoText");
 const fiveTwoClose = document.querySelectorAll("#fiveTwoClose");
 
 fiveOneArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    fiveTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    fiveOneText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    fiveOneClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        fiveOneText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(fiveOneText, fiveOneArea, [fiveTwoArea]);
+    closePopUp(fiveOneClose, fiveOneText, [fiveTwoArea]);
+    removePopUp([fiveTwoText], [fiveTwoArea]);
   });
 });
-
 fiveTwoArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    fiveOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    fiveTwoText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    fiveTwoClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        fiveTwoText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(fiveTwoText, fiveTwoArea, [fiveOneArea]);
+    closePopUp(fiveTwoClose, fiveTwoText, [fiveOneArea]);
+    removePopUp([fiveOneText], [fiveOneArea]);
   });
 });
 
 // IP6
 // 3.6
-const sixOneArea = document.querySelectorAll("#sixOneArea");
+const sixOneArea = document.querySelectorAll("#Layer_61");
 const sixOneText = document.querySelectorAll("#sixOneText");
 const sixOneClose = document.querySelectorAll("#sixOneClose");
 // 9.5
-const sixTwoArea = document.querySelectorAll("#sixTwoArea");
+const sixTwoArea = document.querySelectorAll("#Layer_26");
 const sixTwoText = document.querySelectorAll("#sixTwoText");
 const sixTwoClose = document.querySelectorAll("#sixTwoClose");
 
 // 11.2
-const sixThreeArea = document.querySelectorAll("#sixThreeArea");
+const sixThreeArea = document.querySelectorAll("#Layer_25");
 const sixThreeText = document.querySelectorAll("#sixThreeText");
 const sixThreeClose = document.querySelectorAll("#sixThreeClose");
 
 // 12.2
-const sixFourArea = document.querySelectorAll("#sixFourArea");
+const sixFourArea = document.querySelectorAll("#Layer_24");
 const sixFourText = document.querySelectorAll("#sixFourText");
 const sixFourClose = document.querySelectorAll("#sixFourClose");
 
 // 12.8
-const sixFiveArea = document.querySelectorAll("#sixFiveArea");
+const sixFiveArea = document.querySelectorAll("#Layer_23");
 const sixFiveText = document.querySelectorAll("#sixFiveText");
 const sixFiveClose = document.querySelectorAll("#sixFiveClose");
 
 sixOneArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    sixFiveText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixFourText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixThreeText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixOneText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    sixOneClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        sixOneText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(sixOneText, sixOneArea, [
+      sixThreeArea,
+      sixTwoArea,
+      sixFourArea,
+      sixFiveArea,
+    ]);
+    closePopUp(sixOneClose, sixOneText, [
+      sixThreeArea,
+      sixTwoArea,
+      sixFourArea,
+      sixFiveArea,
+    ]);
+    removePopUp(
+      [sixThreeText, sixTwoText, sixFourText, sixFiveText],
+      [sixThreeArea, sixTwoArea, sixFourArea, sixFiveArea]
+    );
   });
 });
-
 sixTwoArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    sixFiveText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixFourText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixThreeText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixTwoText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    sixTwoClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        sixTwoText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(sixTwoText, sixTwoArea, [
+      sixThreeArea,
+      sixOneArea,
+      sixFourArea,
+      sixFiveArea,
+    ]);
+    closePopUp(sixTwoClose, sixTwoText, [
+      sixThreeArea,
+      sixOneArea,
+      sixFourArea,
+      sixFiveArea,
+    ]);
+    removePopUp(
+      [sixThreeText, sixOneText, sixFourText, sixFiveText],
+      [sixThreeArea, sixOneArea, sixFourArea, sixFiveArea]
+    );
   });
 });
-
 sixThreeArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    sixFiveText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixFourText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixThreeText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    sixThreeClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        sixThreeText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(sixThreeText, sixThreeArea, [
+      sixOneArea,
+      sixTwoArea,
+      sixFourArea,
+      sixFiveArea,
+    ]);
+    closePopUp(sixThreeClose, sixThreeText, [
+      sixOneArea,
+      sixTwoArea,
+      sixFourArea,
+      sixFiveArea,
+    ]);
+    removePopUp(
+      [sixOneText, sixTwoText, sixFourText, sixFiveText],
+      [sixOneArea, sixTwoArea, sixFourArea, sixFiveArea]
+    );
   });
 });
-
 sixFourArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    sixFiveText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixThreeText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixFourText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    sixFourClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        sixFourText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(sixFourText, sixFourArea, [
+      sixThreeArea,
+      sixTwoArea,
+      sixOneArea,
+      sixFiveArea,
+    ]);
+    closePopUp(sixFourClose, sixFourText, [
+      sixThreeArea,
+      sixTwoArea,
+      sixOneArea,
+      sixFiveArea,
+    ]);
+    removePopUp(
+      [sixThreeText, sixTwoText, sixOneText, sixFiveText],
+      [sixThreeArea, sixTwoArea, sixOneArea, sixFiveArea]
+    );
   });
 });
 sixFiveArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    sixOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixThreeText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixFourText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sixFiveText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    sixFiveClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        sixFiveText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(sixFiveText, sixFiveArea, [
+      sixThreeArea,
+      sixTwoArea,
+      sixFourArea,
+      sixOneArea,
+    ]);
+    closePopUp(sixFiveClose, sixFiveText, [
+      sixThreeArea,
+      sixTwoArea,
+      sixFourArea,
+      sixOneArea,
+    ]);
+    removePopUp(
+      [sixThreeText, sixTwoText, sixFourText, sixOneText],
+      [sixThreeArea, sixTwoArea, sixFourArea, sixOneArea]
+    );
   });
 });
+
 // IP7
 // 8.4
-const sevenOneArea = document.querySelectorAll("#sevenOneArea");
+const sevenOneArea = document.querySelectorAll("#Layer_31");
 const sevenOneText = document.querySelectorAll("#sevenOneText");
 const sevenOneClose = document.querySelectorAll("#sevenOneClose");
 // 12.2
-const sevenTwoArea = document.querySelectorAll("#sevenTwoArea");
+const sevenTwoArea = document.querySelectorAll("#Layer_30");
 const sevenTwoText = document.querySelectorAll("#sevenTwoText");
 const sevenTwoClose = document.querySelectorAll("#sevenTwoClose");
 
 // 12.5
-const sevenThreeArea = document.querySelectorAll("#sevenThreeArea");
+const sevenThreeArea = document.querySelectorAll("#Layer_29");
 const sevenThreeText = document.querySelectorAll("#sevenThreeText");
 const sevenThreeClose = document.querySelectorAll("#sevenThreeClose");
 
 sevenOneArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    sevenThreeText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sevenTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sevenOneText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    sevenOneClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        sevenOneText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(sevenOneText, sevenOneArea, [sevenThreeArea, sevenTwoArea]);
+    closePopUp(sevenOneClose, sevenOneText, [sevenThreeArea, sevenTwoArea]);
+    removePopUp([sevenThreeText, sevenTwoText], [sevenThreeArea, sevenTwoArea]);
   });
 });
-
 sevenTwoArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    sevenThreeText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sevenOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sevenTwoText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    sevenTwoClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        sevenTwoText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(sevenTwoText, sevenTwoArea, [sevenThreeArea, sevenOneArea]);
+    closePopUp(sevenTwoClose, sevenTwoText, [sevenThreeArea, sevenOneArea]);
+    removePopUp([sevenThreeText, sevenOneText], [sevenThreeArea, sevenOneArea]);
   });
 });
-
 sevenThreeArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    sevenTwoText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sevenOneText.forEach(function (item) {
-      if (item.classList.contains("show-text")) {
-        item.classList.remove("show-text");
-      }
-    });
-    sevenThreeText.forEach(function (item) {
-      item.classList.toggle("show-text");
-    });
-    sevenThreeClose.forEach(function (item) {
-      item.addEventListener("click", () => {
-        sevenThreeText.forEach(function (item) {
-          if (item.classList.contains("show-text")) {
-            item.classList.remove("show-text");
-          }
-        });
-      });
-    });
+    togglePopUp(sevenThreeText, sevenThreeArea, [sevenOneArea, sevenTwoArea]);
+    closePopUp(sevenThreeClose, sevenThreeText, [sevenOneArea, sevenTwoArea]);
+    removePopUp([sevenOneText, sevenTwoText], [sevenOneArea, sevenTwoArea]);
   });
 });

@@ -133,6 +133,12 @@ div.right-sec > .target-img {
   max-width: 80px;
   padding: 5px;
 }
+.child-list-item > svg {
+  width: 320px;
+}
+g:not(:first-child) {
+  cursor: pointer;
+}
 .goal-img {
   max-width: 55px !important;
 }
