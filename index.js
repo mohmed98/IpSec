@@ -7,31 +7,41 @@ function removePopUp(textElem) {
     });
   });
 }
-function togglePopUp(textElem, areaElm, goalElem) {
+function togglePopUp(textElem, areaElm, goalElem, cir) {
+  cir.forEach(function (item) {
+    item.classList.add("active-circle");
+  });
   textElem.forEach(function (item) {
-    console.log(item);
-    item.classList.toggle("show-text");
+    item.classList.add("show-text");
   });
   areaElm.forEach(function (item) {
     if (item.classList.contains("faded-goal")) {
       item.classList.remove("faded-goal");
     }
+    item.classList.add("active-goal");
   });
   goalElem.forEach(function (itemArr) {
     itemArr.forEach(function (item) {
       if (!item.classList.contains("faded-goal")) {
         item.classList.add("faded-goal");
+        item.classList.remove("active-goal");
       }
     });
   });
 }
-function closePopUp(closeElem, textElm, goalElem) {
+function closePopUp(closeElem, textElm, areaElm, goalElem, cir) {
   closeElem.forEach(function (item) {
     item.addEventListener("click", () => {
+      cir.forEach(function (item) {
+        item.classList.remove("active-circle");
+      });
       textElm.forEach(function (item) {
         if (item.classList.contains("show-text")) {
           item.classList.remove("show-text");
         }
+      });
+      areaElm.forEach(function (item) {
+        item.classList.remove("active-goal");
       });
       goalElem.forEach(function (itemArr) {
         itemArr.forEach(function (item) {
@@ -41,6 +51,60 @@ function closePopUp(closeElem, textElm, goalElem) {
     });
   });
 }
+function fadeElms(hovered, faded) {
+  hovered.forEach(function (item) {
+    item.addEventListener("mouseover", () => {
+      item.style.transform = "scale(1.01, 1.01)";
+      faded.forEach(function (itemArr) {
+        itemArr.forEach(function (item) {
+          item.style.opacity = "0.5";
+        });
+      });
+    });
+  });
+}
+function removeFadeElms(hovered, faded) {
+  hovered.forEach(function (item) {
+    item.addEventListener("mouseout", () => {
+      item.style.transform = "scale(0.99, 0.99)";
+      faded.forEach(function (itemArr) {
+        itemArr.forEach(function (item) {
+          item.style.opacity = "1";
+        });
+      });
+    });
+  });
+}
+function scrollEffect(cir) {
+  window.addEventListener("scroll", () => {
+    cir.forEach(function (item) {
+      if (
+        item.getBoundingClientRect().y < 400 &&
+        item.getBoundingClientRect().y > 50
+      ) {
+        item.classList.add("displayed");
+      } else {
+        item.classList.remove("displayed");
+      }
+    });
+  });
+}
+// scroll effect
+const numberOneCircle = document.querySelectorAll("#_01");
+const numberTwoCircle = document.querySelectorAll("#_02");
+const numberThreeCircle = document.querySelectorAll("#_03");
+const numberFourCircle = document.querySelectorAll("#_04");
+const numberFiveCircle = document.querySelectorAll("#_05");
+const numberSixCircle = document.querySelectorAll("#_06");
+const numberSevenCircle = document.querySelectorAll("#_07");
+scrollEffect(numberOneCircle);
+scrollEffect(numberTwoCircle);
+scrollEffect(numberThreeCircle);
+scrollEffect(numberFourCircle);
+scrollEffect(numberFiveCircle);
+scrollEffect(numberSixCircle);
+scrollEffect(numberSevenCircle);
+
 // IP1
 // 8.4
 const oneOneArea = document.querySelectorAll("#Layer_21");
@@ -58,28 +122,69 @@ const oneThreeClose = document.querySelectorAll("#oneThreeClose");
 
 oneOneArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(oneOneText, oneOneArea, [oneThreeArea, oneTwoArea]);
-    closePopUp(oneOneClose, oneOneText, [oneThreeArea, oneTwoArea]);
-    removePopUp([oneThreeText, oneTwoText], [oneThreeArea, oneTwoArea]);
+    togglePopUp(
+      oneOneText,
+      oneOneArea,
+      [oneThreeArea, oneTwoArea],
+      numberOneCircle
+    );
+    closePopUp(
+      oneOneClose,
+      oneOneText,
+      oneOneArea,
+      [oneThreeArea, oneTwoArea],
+      numberOneCircle
+    );
+    removePopUp([(oneThreeText, oneTwoText)], [oneThreeArea, oneTwoArea]);
   });
 });
 
 oneTwoArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(oneTwoText, oneTwoArea, [oneThreeArea, oneOneArea]);
-    closePopUp(oneTwoClose, oneTwoText, [oneThreeArea, oneOneArea]);
+    togglePopUp(
+      oneTwoText,
+      oneTwoArea,
+      [oneThreeArea, oneOneArea],
+      numberOneCircle
+    );
+    closePopUp(
+      oneTwoClose,
+      oneTwoText,
+      oneTwoArea,
+      [oneThreeArea, oneOneArea],
+      numberOneCircle
+    );
     removePopUp([oneThreeText, oneOneText], [oneThreeArea, oneOneArea]);
   });
 });
 
 oneThreeArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(oneThreeText, oneThreeArea, [oneTwoArea, oneOneArea]);
-    closePopUp(oneThreeClose, oneThreeText, [oneTwoArea, oneOneArea]);
+    togglePopUp(
+      oneThreeText,
+      oneThreeArea,
+      [oneTwoArea, oneOneArea],
+      numberOneCircle
+    );
+    closePopUp(
+      oneThreeClose,
+      oneThreeText,
+      oneThreeArea,
+      [oneTwoArea, oneOneArea],
+      numberOneCircle
+    );
     removePopUp([oneTwoText, oneOneText], [oneTwoArea, oneOneArea]);
   });
 });
 
+fadeElms(oneOneArea, [oneTwoArea, oneThreeArea]);
+removeFadeElms(oneOneArea, [oneTwoArea, oneThreeArea]);
+
+fadeElms(oneTwoArea, [oneOneArea, oneThreeArea]);
+removeFadeElms(oneTwoArea, [oneOneArea, oneThreeArea]);
+
+fadeElms(oneThreeArea, [oneTwoArea, oneOneArea]);
+removeFadeElms(oneThreeArea, [oneTwoArea, oneOneArea]);
 // IP2
 // 8.4
 const twoOneArea = document.querySelectorAll("#Layer_17");
@@ -97,28 +202,70 @@ const twoThreeClose = document.querySelectorAll("#twoThreeClose");
 
 twoOneArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(twoOneText, twoOneArea, [twoThreeArea, twoTwoArea]);
-    closePopUp(twoOneClose, twoOneText, [twoThreeArea, twoTwoArea]);
+    togglePopUp(
+      twoOneText,
+      twoOneArea,
+      [twoThreeArea, twoTwoArea],
+      numberTwoCircle
+    );
+    closePopUp(
+      twoOneClose,
+      twoOneText,
+      twoOneArea,
+      [twoThreeArea, twoTwoArea],
+      numberTwoCircle
+    );
+
     removePopUp([twoThreeText, twoTwoText], [twoThreeArea, twoTwoArea]);
   });
 });
 
 twoTwoArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(twoTwoText, twoTwoArea, [twoThreeArea, twoOneArea]);
-    closePopUp(twoTwoClose, twoTwoText, [twoThreeArea, twoOneArea]);
+    togglePopUp(
+      twoTwoText,
+      twoTwoArea,
+      [twoThreeArea, twoOneArea],
+      numberTwoCircle
+    );
+    closePopUp(
+      twoTwoClose,
+      twoTwoText,
+      twoTwoArea,
+      [twoThreeArea, twoOneArea],
+      numberTwoCircle
+    );
     removePopUp([twoThreeText, twoOneText], [twoThreeArea, twoOneArea]);
   });
 });
 
 twoThreeArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(twoThreeText, twoThreeArea, [twoTwoArea, twoOneArea]);
-    closePopUp(twoThreeClose, twoThreeText, [twoTwoArea, twoOneArea]);
+    togglePopUp(
+      twoThreeText,
+      twoThreeArea,
+      [twoTwoArea, twoOneArea],
+      numberTwoCircle
+    );
+    closePopUp(
+      twoThreeClose,
+      twoThreeText,
+      twoThreeArea,
+      [twoTwoArea, twoOneArea],
+      numberTwoCircle
+    );
     removePopUp([twoTwoText, twoOneText], [twoTwoArea, twoOneArea]);
   });
 });
 
+fadeElms(twoOneArea, [twoTwoArea, twoThreeArea]);
+removeFadeElms(twoOneArea, [twoTwoArea, twoThreeArea]);
+
+fadeElms(twoTwoArea, [twoOneArea, twoThreeArea]);
+removeFadeElms(twoTwoArea, [twoOneArea, twoThreeArea]);
+
+fadeElms(twoThreeArea, [twoTwoArea, twoOneArea]);
+removeFadeElms(twoThreeArea, [twoTwoArea, twoOneArea]);
 // IP3
 // 9.4
 const threeOneArea = document.querySelectorAll("#Layer_14");
@@ -141,16 +288,19 @@ const threeFourClose = document.querySelectorAll("#threeFourClose");
 
 threeOneArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(threeOneText, threeOneArea, [
-      threeThreeArea,
-      threeTwoArea,
-      threeFourArea,
-    ]);
-    closePopUp(threeOneClose, threeOneText, [
-      threeThreeArea,
-      threeTwoArea,
-      threeFourArea,
-    ]);
+    togglePopUp(
+      threeOneText,
+      threeOneArea,
+      [threeThreeArea, threeTwoArea, threeFourArea],
+      numberThreeCircle
+    );
+    closePopUp(
+      threeOneClose,
+      threeOneText,
+      threeOneArea,
+      [threeThreeArea, threeTwoArea, threeFourArea],
+      numberThreeCircle
+    );
     removePopUp(
       [threeThreeText, threeTwoText, threeFourText],
       [threeThreeArea, threeTwoArea, threeFourArea]
@@ -159,16 +309,19 @@ threeOneArea.forEach(function (item) {
 });
 threeTwoArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(threeTwoText, threeTwoArea, [
-      threeThreeArea,
-      threeOneArea,
-      threeFourArea,
-    ]);
-    closePopUp(threeTwoClose, threeTwoText, [
-      threeThreeArea,
-      threeOneArea,
-      threeFourArea,
-    ]);
+    togglePopUp(
+      threeTwoText,
+      threeTwoArea,
+      [threeThreeArea, threeOneArea, threeFourArea],
+      numberThreeCircle
+    );
+    closePopUp(
+      threeTwoClose,
+      threeTwoText,
+      threeTwoArea,
+      [threeThreeArea, threeOneArea, threeFourArea],
+      numberThreeCircle
+    );
     removePopUp(
       [threeThreeText, threeOneText, threeFourText],
       [threeThreeArea, threeOneArea, threeFourArea]
@@ -177,16 +330,19 @@ threeTwoArea.forEach(function (item) {
 });
 threeThreeArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(threeThreeText, threeThreeArea, [
-      threeOneArea,
-      threeTwoArea,
-      threeFourArea,
-    ]);
-    closePopUp(threeThreeClose, threeThreeText, [
-      threeOneArea,
-      threeTwoArea,
-      threeFourArea,
-    ]);
+    togglePopUp(
+      threeThreeText,
+      threeThreeArea,
+      [threeOneArea, threeTwoArea, threeFourArea],
+      numberThreeCircle
+    );
+    closePopUp(
+      threeThreeClose,
+      threeThreeText,
+      threeThreeArea,
+      [threeOneArea, threeTwoArea, threeFourArea],
+      numberThreeCircle
+    );
     removePopUp(
       [threeOneText, threeTwoText, threeFourText],
       [threeOneArea, threeTwoArea, threeFourArea]
@@ -195,16 +351,19 @@ threeThreeArea.forEach(function (item) {
 });
 threeFourArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(threeFourText, threeFourArea, [
-      threeThreeArea,
-      threeTwoArea,
-      threeOneArea,
-    ]);
-    closePopUp(threeFourClose, threeFourText, [
-      threeThreeArea,
-      threeTwoArea,
-      threeOneArea,
-    ]);
+    togglePopUp(
+      threeFourText,
+      threeFourArea,
+      [threeThreeArea, threeTwoArea, threeOneArea],
+      numberThreeCircle
+    );
+    closePopUp(
+      threeFourClose,
+      threeFourText,
+      threeFourArea,
+      [threeThreeArea, threeTwoArea, threeOneArea],
+      numberThreeCircle
+    );
     removePopUp(
       [threeThreeText, threeTwoText, threeOneText],
       [threeThreeArea, threeTwoArea, threeOneArea]
@@ -212,6 +371,17 @@ threeFourArea.forEach(function (item) {
   });
 });
 
+fadeElms(threeOneArea, [threeTwoArea, threeThreeArea, threeFourArea]);
+removeFadeElms(threeOneArea, [threeTwoArea, threeThreeArea, threeFourArea]);
+
+fadeElms(threeTwoArea, [threeOneArea, threeThreeArea, threeFourArea]);
+removeFadeElms(threeTwoArea, [threeOneArea, threeThreeArea, threeFourArea]);
+
+fadeElms(threeThreeArea, [threeTwoArea, threeOneArea, threeFourArea]);
+removeFadeElms(threeThreeArea, [threeTwoArea, threeOneArea, threeFourArea]);
+
+fadeElms(threeFourArea, [threeTwoArea, threeOneArea, threeThreeArea]);
+removeFadeElms(threeFourArea, [threeTwoArea, threeOneArea, threeThreeArea]);
 // IP4
 // 5.6
 const fourOneArea = document.querySelectorAll("#Layer_9");
@@ -229,28 +399,69 @@ const fourThreeClose = document.querySelectorAll("#fourThreeClose");
 
 fourOneArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(fourOneText, fourOneArea, [fourThreeArea, fourTwoArea]);
-    closePopUp(fourOneClose, fourOneText, [fourThreeArea, fourTwoArea]);
+    togglePopUp(
+      fourOneText,
+      fourOneArea,
+      [fourThreeArea, fourTwoArea],
+      numberFourCircle
+    );
+    closePopUp(
+      fourOneClose,
+      fourOneText,
+      fourOneArea,
+      [fourThreeArea, fourTwoArea],
+      numberFourCircle
+    );
     removePopUp([fourThreeText, fourTwoText], [fourThreeArea, fourTwoArea]);
   });
 });
 
 fourTwoArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(fourTwoText, fourTwoArea, [fourThreeArea, fourOneArea]);
-    closePopUp(fourTwoClose, fourTwoText, [fourThreeArea, fourOneArea]);
+    togglePopUp(
+      fourTwoText,
+      fourTwoArea,
+      [fourThreeArea, fourOneArea],
+      numberFourCircle
+    );
+    closePopUp(
+      fourTwoClose,
+      fourTwoText,
+      fourTwoArea,
+      [fourThreeArea, fourOneArea],
+      numberFourCircle
+    );
     removePopUp([fourThreeText, fourOneText], [fourThreeArea, fourOneArea]);
   });
 });
 
 fourThreeArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(fourThreeText, fourThreeArea, [fourTwoArea, fourOneArea]);
-    closePopUp(fourThreeClose, fourThreeText, [fourTwoArea, fourOneArea]);
+    togglePopUp(
+      fourThreeText,
+      fourThreeArea,
+      [fourTwoArea, fourOneArea],
+      numberFourCircle
+    );
+    closePopUp(
+      fourThreeClose,
+      fourThreeText,
+      fourThreeArea,
+      [fourTwoArea, fourOneArea],
+      numberFourCircle
+    );
     removePopUp([fourTwoText, fourOneText], [fourTwoArea, fourOneArea]);
   });
 });
 
+fadeElms(fourOneArea, [fourTwoArea, fourThreeArea]);
+removeFadeElms(fourOneArea, [fourTwoArea, fourThreeArea]);
+
+fadeElms(fourTwoArea, [fourOneArea, fourThreeArea]);
+removeFadeElms(fourTwoArea, [fourOneArea, fourThreeArea]);
+
+fadeElms(fourThreeArea, [fourTwoArea, fourOneArea]);
+removeFadeElms(fourThreeArea, [fourTwoArea, fourOneArea]);
 // IP5
 // 12.4
 const fiveOneArea = document.querySelectorAll("#Layer_52");
@@ -263,19 +474,36 @@ const fiveTwoClose = document.querySelectorAll("#fiveTwoClose");
 
 fiveOneArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(fiveOneText, fiveOneArea, [fiveTwoArea]);
-    closePopUp(fiveOneClose, fiveOneText, [fiveTwoArea]);
+    togglePopUp(fiveOneText, fiveOneArea, [fiveTwoArea], numberFiveCircle);
+    closePopUp(
+      fiveOneClose,
+      fiveOneText,
+      fiveOneArea,
+      [fiveTwoArea],
+      numberFiveCircle
+    );
     removePopUp([fiveTwoText], [fiveTwoArea]);
   });
 });
 fiveTwoArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(fiveTwoText, fiveTwoArea, [fiveOneArea]);
-    closePopUp(fiveTwoClose, fiveTwoText, [fiveOneArea]);
+    togglePopUp(fiveTwoText, fiveTwoArea, [fiveOneArea], numberFiveCircle);
+    closePopUp(
+      fiveTwoClose,
+      fiveTwoText,
+      fiveTwoArea,
+      [fiveOneArea],
+      numberFiveCircle
+    );
     removePopUp([fiveOneText], [fiveOneArea]);
   });
 });
 
+fadeElms(fiveOneArea, [fiveTwoArea]);
+removeFadeElms(fiveOneArea, [fiveTwoArea]);
+
+fadeElms(fiveTwoArea, [fiveOneArea]);
+removeFadeElms(fiveTwoArea, [fiveOneArea]);
 // IP6
 // 3.6
 const sixOneArea = document.querySelectorAll("#Layer_61");
@@ -303,18 +531,19 @@ const sixFiveClose = document.querySelectorAll("#sixFiveClose");
 
 sixOneArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(sixOneText, sixOneArea, [
-      sixThreeArea,
-      sixTwoArea,
-      sixFourArea,
-      sixFiveArea,
-    ]);
-    closePopUp(sixOneClose, sixOneText, [
-      sixThreeArea,
-      sixTwoArea,
-      sixFourArea,
-      sixFiveArea,
-    ]);
+    togglePopUp(
+      sixOneText,
+      sixOneArea,
+      [sixThreeArea, sixTwoArea, sixFourArea, sixFiveArea],
+      numberSixCircle
+    );
+    closePopUp(
+      sixOneClose,
+      sixOneText,
+      sixOneArea,
+      [sixThreeArea, sixTwoArea, sixFourArea, sixFiveArea],
+      numberSixCircle
+    );
     removePopUp(
       [sixThreeText, sixTwoText, sixFourText, sixFiveText],
       [sixThreeArea, sixTwoArea, sixFourArea, sixFiveArea]
@@ -323,18 +552,19 @@ sixOneArea.forEach(function (item) {
 });
 sixTwoArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(sixTwoText, sixTwoArea, [
-      sixThreeArea,
-      sixOneArea,
-      sixFourArea,
-      sixFiveArea,
-    ]);
-    closePopUp(sixTwoClose, sixTwoText, [
-      sixThreeArea,
-      sixOneArea,
-      sixFourArea,
-      sixFiveArea,
-    ]);
+    togglePopUp(
+      sixTwoText,
+      sixTwoArea,
+      [sixThreeArea, sixOneArea, sixFourArea, sixFiveArea],
+      numberSixCircle
+    );
+    closePopUp(
+      sixTwoClose,
+      sixTwoText,
+      sixTwoArea,
+      [sixThreeArea, sixOneArea, sixFourArea, sixFiveArea, sixTwoArea],
+      numberSixCircle
+    );
     removePopUp(
       [sixThreeText, sixOneText, sixFourText, sixFiveText],
       [sixThreeArea, sixOneArea, sixFourArea, sixFiveArea]
@@ -343,18 +573,19 @@ sixTwoArea.forEach(function (item) {
 });
 sixThreeArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(sixThreeText, sixThreeArea, [
-      sixOneArea,
-      sixTwoArea,
-      sixFourArea,
-      sixFiveArea,
-    ]);
-    closePopUp(sixThreeClose, sixThreeText, [
-      sixOneArea,
-      sixTwoArea,
-      sixFourArea,
-      sixFiveArea,
-    ]);
+    togglePopUp(
+      sixThreeText,
+      sixThreeArea,
+      [sixOneArea, sixTwoArea, sixFourArea, sixFiveArea],
+      numberSixCircle
+    );
+    closePopUp(
+      sixThreeClose,
+      sixThreeText,
+      sixThreeArea,
+      [sixOneArea, sixTwoArea, sixFourArea, sixFiveArea],
+      numberSixCircle
+    );
     removePopUp(
       [sixOneText, sixTwoText, sixFourText, sixFiveText],
       [sixOneArea, sixTwoArea, sixFourArea, sixFiveArea]
@@ -363,18 +594,19 @@ sixThreeArea.forEach(function (item) {
 });
 sixFourArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(sixFourText, sixFourArea, [
-      sixThreeArea,
-      sixTwoArea,
-      sixOneArea,
-      sixFiveArea,
-    ]);
-    closePopUp(sixFourClose, sixFourText, [
-      sixThreeArea,
-      sixTwoArea,
-      sixOneArea,
-      sixFiveArea,
-    ]);
+    togglePopUp(
+      sixFourText,
+      sixFourArea,
+      [sixThreeArea, sixTwoArea, sixOneArea, sixFiveArea],
+      numberSixCircle
+    );
+    closePopUp(
+      sixFourClose,
+      sixFourText,
+      sixFourArea,
+      [sixThreeArea, sixTwoArea, sixOneArea, sixFiveArea],
+      numberSixCircle
+    );
     removePopUp(
       [sixThreeText, sixTwoText, sixOneText, sixFiveText],
       [sixThreeArea, sixTwoArea, sixOneArea, sixFiveArea]
@@ -383,18 +615,19 @@ sixFourArea.forEach(function (item) {
 });
 sixFiveArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(sixFiveText, sixFiveArea, [
-      sixThreeArea,
-      sixTwoArea,
-      sixFourArea,
-      sixOneArea,
-    ]);
-    closePopUp(sixFiveClose, sixFiveText, [
-      sixThreeArea,
-      sixTwoArea,
-      sixFourArea,
-      sixOneArea,
-    ]);
+    togglePopUp(
+      sixFiveText,
+      sixFiveArea,
+      [sixThreeArea, sixTwoArea, sixFourArea, sixOneArea],
+      numberSixCircle
+    );
+    closePopUp(
+      sixFiveClose,
+      sixFiveText,
+      sixFiveArea,
+      [sixThreeArea, sixTwoArea, sixFourArea, sixOneArea],
+      numberSixCircle
+    );
     removePopUp(
       [sixThreeText, sixTwoText, sixFourText, sixOneText],
       [sixThreeArea, sixTwoArea, sixFourArea, sixOneArea]
@@ -402,6 +635,45 @@ sixFiveArea.forEach(function (item) {
   });
 });
 
+fadeElms(sixOneArea, [sixTwoArea, sixThreeArea, sixFourArea, sixFiveArea]);
+removeFadeElms(sixOneArea, [
+  sixTwoArea,
+  sixThreeArea,
+  sixFourArea,
+  sixFiveArea,
+]);
+
+fadeElms(sixTwoArea, [sixOneArea, sixThreeArea, sixFourArea, sixFiveArea]);
+removeFadeElms(sixTwoArea, [
+  sixOneArea,
+  sixThreeArea,
+  sixFourArea,
+  sixFiveArea,
+]);
+
+fadeElms(sixThreeArea, [sixTwoArea, sixOneArea, sixFourArea, sixFiveArea]);
+removeFadeElms(sixThreeArea, [
+  sixTwoArea,
+  sixOneArea,
+  sixFourArea,
+  sixFiveArea,
+]);
+
+fadeElms(sixFourArea, [sixTwoArea, sixOneArea, sixThreeArea, sixFiveArea]);
+removeFadeElms(sixFourArea, [
+  sixTwoArea,
+  sixOneArea,
+  sixThreeArea,
+  sixFiveArea,
+]);
+
+fadeElms(sixFiveArea, [sixTwoArea, sixOneArea, sixThreeArea, sixFourArea]);
+removeFadeElms(sixFiveArea, [
+  sixTwoArea,
+  sixOneArea,
+  sixThreeArea,
+  sixFourArea,
+]);
 // IP7
 // 8.4
 const sevenOneArea = document.querySelectorAll("#Layer_31");
@@ -419,22 +691,63 @@ const sevenThreeClose = document.querySelectorAll("#sevenThreeClose");
 
 sevenOneArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(sevenOneText, sevenOneArea, [sevenThreeArea, sevenTwoArea]);
-    closePopUp(sevenOneClose, sevenOneText, [sevenThreeArea, sevenTwoArea]);
+    togglePopUp(
+      sevenOneText,
+      sevenOneArea,
+      [sevenThreeArea, sevenTwoArea],
+      numberSevenCircle
+    );
+    closePopUp(
+      sevenOneClose,
+      sevenOneText,
+      sevenOneArea,
+      [sevenThreeArea, sevenTwoArea],
+      numberSevenCircle
+    );
     removePopUp([sevenThreeText, sevenTwoText], [sevenThreeArea, sevenTwoArea]);
   });
 });
 sevenTwoArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(sevenTwoText, sevenTwoArea, [sevenThreeArea, sevenOneArea]);
-    closePopUp(sevenTwoClose, sevenTwoText, [sevenThreeArea, sevenOneArea]);
+    togglePopUp(
+      sevenTwoText,
+      sevenTwoArea,
+      [sevenThreeArea, sevenOneArea],
+      numberSevenCircle
+    );
+    closePopUp(
+      sevenTwoClose,
+      sevenTwoText,
+      sevenTwoArea,
+      [sevenThreeArea, sevenOneArea],
+      numberSevenCircle
+    );
     removePopUp([sevenThreeText, sevenOneText], [sevenThreeArea, sevenOneArea]);
   });
 });
 sevenThreeArea.forEach(function (item) {
   item.addEventListener("click", () => {
-    togglePopUp(sevenThreeText, sevenThreeArea, [sevenOneArea, sevenTwoArea]);
-    closePopUp(sevenThreeClose, sevenThreeText, [sevenOneArea, sevenTwoArea]);
+    togglePopUp(
+      sevenThreeText,
+      sevenThreeArea,
+      [sevenOneArea, sevenTwoArea],
+      numberSevenCircle
+    );
+    closePopUp(
+      sevenThreeClose,
+      sevenThreeText,
+      sevenThreeArea,
+      [sevenOneArea, sevenTwoArea],
+      numberSevenCircle
+    );
     removePopUp([sevenOneText, sevenTwoText], [sevenOneArea, sevenTwoArea]);
   });
 });
+
+fadeElms(sevenOneArea, [sevenTwoArea, sevenThreeArea]);
+removeFadeElms(sevenOneArea, [sevenTwoArea, sevenThreeArea]);
+
+fadeElms(sevenTwoArea, [sevenOneArea, sevenThreeArea]);
+removeFadeElms(sevenTwoArea, [sevenOneArea, sevenThreeArea]);
+
+fadeElms(sevenThreeArea, [sevenTwoArea, sevenOneArea]);
